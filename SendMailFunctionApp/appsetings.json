@@ -1,0 +1,10 @@
+{
+  "MailService": {
+    "From": "northwind@sales.org",
+    "AdministratorEMail": "admin@sales.org",
+    "Host": "smtp.mailtrap.io",
+    "Port": "2525",
+    "UserName": "924fdfdadfce5a",
+    "Password": "340af391d68d96"
+  }
+}
