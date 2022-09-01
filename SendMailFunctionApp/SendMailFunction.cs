@@ -13,10 +13,12 @@ namespace SendMailFunctionApp
     public class SendMailFunction
     {
         readonly MailService MailService;
+        readonly IConfiguration Configuration;
 
-        public SendMailFunction(MailService mailService)
+        public SendMailFunction(MailService mailService, IConfiguration configuration)
         {
             MailService = mailService;
+            Configuration = configuration;
         }
 
         [FunctionName("SendMailFunction")]
@@ -39,7 +41,7 @@ namespace SendMailFunctionApp
 
             try
             {
-                await MailService.SendMail("Important message", message);
+                await MailService.SendMail(Configuration["Subject"], message);
             }
             catch(Exception ex)
             {

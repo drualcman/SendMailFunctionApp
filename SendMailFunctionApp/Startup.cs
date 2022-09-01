@@ -14,6 +14,9 @@ internal class Startup : FunctionsStartup
     {
         base.ConfigureAppConfiguration(builder);
         var context = builder.GetContext();
-        builder.ConfigurationBuilder.AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsetings.json"), true, false);
+        builder.ConfigurationBuilder.AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), true, false);
+        builder.ConfigurationBuilder.AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), true, false);
+        //importante para que siempre lea el local setting o local publicado
+        builder.ConfigurationBuilder.AddEnvironmentVariables();
     }
 }
